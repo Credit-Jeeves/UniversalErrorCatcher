@@ -109,11 +109,11 @@ class UniversalErrorCatcher_Catcher
 
     /**
      *
-     * @param Exception $e
+     * @param Throwable $e
      *
      * @return void
      */
-    public function handleException(Exception $e)
+    public function handleException(Throwable $e)
     {
         $caughtExceptions = array();
         foreach ($this->callbacks as $callback) {
@@ -128,7 +128,7 @@ class UniversalErrorCatcher_Catcher
             foreach ($this->callbacks as $callback) {
                 try {
                     call_user_func_array($callback, array($caughtException));
-                } catch (Exception $e) {
+                } catch (Throwable $e) {
                     // we did our best so there is nothing left we can do.  
                 }
             }
